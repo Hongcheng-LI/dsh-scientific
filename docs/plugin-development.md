@@ -63,7 +63,7 @@ export function apply(ctx: any, config: Config = {}): void {
 
 - 单元测试放 `test/`，离线（mock/fixture），`npm test` 跑
 - 真实环境联调放 `test/live.mjs`，`npm run test:live` 显式跑
-- 发布：在插件目录 `npm pack` → tarball 或发 npm；从 monorepo 安装用 `github:Hongcheng-LI/dsh-scientific#<tag>`
+- 发布：在插件目录 `npm pack` → tarball 安装；或从插件目录发 npm（monorepo 根目录不是插件包，不能整仓安装）
 
 ## 本仓库约定
 
