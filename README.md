@@ -53,9 +53,9 @@ dsh plugin --profile web add ./dsh-zotero-0.1.0.tgz
 
 计算类插件（vina/pymol/chimerax/gromacs）目前为**骨架状态**：包结构与注入配置已就位、工具规划已写在各自 README，安装后不注册任何工具、不影响启动。前置软件（Vina、PyMOL、ChimeraX、GROMACS）的要求见各插件 README。
 
-## 姊妹仓库
+## 相关能力
 
-- [dsh-synbio](https://github.com/Hongcheng-LI/dsh-synbio) — 文献（Europe PMC）、通路/酶/化合物（KEGG）、蛋白结构（RCSB PDB）检索工具，国内网络直连可达
+文献（Europe PMC）、通路/酶/化合物（KEGG）、蛋白结构（RCSB PDB）检索工具（原 dsh-synbio，国内网络直连可达）计划以 `plugins/synbio` 形式并入本仓库，届时在此更新安装说明。
 
 ## License
 
