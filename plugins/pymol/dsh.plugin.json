@@ -1,0 +1,6 @@
+{
+  "name": "dsh-pymol",
+  "description": "AutoDock Vina molecular docking tools for DeepSeek Harness",
+  "version": "0.1.0",
+  "entry": { "name": "dsh-pymol", "inject": [] }
+}

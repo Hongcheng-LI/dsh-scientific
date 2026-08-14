@@ -1,0 +1,13 @@
+# dsh-gromacs: GROMACS molecular dynamics tools for DeepSeek Harness.
+#
+# 需要本机安装 GROMACS（https://www.gromacs.org）并 source GMXRC，gmx 在 PATH 中；
+# 或用 binary 配置项指定绝对路径：
+#
+#   - id: tool-gromacs
+#     config:
+#       binary: D:/tools/gromacs/bin/gmx.exe    # 缺省用 PATH 里的 gmx
+#       timeoutMs: 3600000                       # 单条命令超时，默认 1 小时（mdrun 按需调大）
+- insert:
+    - id: tool-gromacs
+      name: dsh-gromacs
+      config: {}

@@ -1,0 +1,13 @@
+# dsh-chimerax: ChimeraX headless scripting tools for DeepSeek Harness.
+#
+# 需要本机安装 UCSF ChimeraX（https://www.cgl.ucsf.edu/chimerax/），chimerax 在 PATH 中；
+# Windows 下通常需要配置 binary 绝对路径（默认安装位置含版本号）：
+#
+#   - id: tool-chimerax
+#     config:
+#       binary: C:/Program Files/ChimeraX/bin/ChimeraX.exe
+#       timeoutMs: 300000          # 脚本执行超时，默认 5 分钟
+- insert:
+    - id: tool-chimerax
+      name: dsh-chimerax
+      config: {}

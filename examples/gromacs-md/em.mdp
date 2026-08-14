@@ -1,0 +1,14 @@
+; GROMACS 能量最小化参数模板（最速下降法）
+; 配合 skills/molecular-dynamics 使用：gmx grompp -f em.mdp -c solv_ions.gro -p topol.top -o em.tpr
+
+integrator = steep
+emtol       = 1000.0        ; kJ/mol/nm，收敛判据
+emstep      = 0.01
+nsteps      = 50000
+
+cutoff-scheme = Verlet
+nstlist       = 10
+coulombtype   = PME
+rcoulomb      = 1.0
+rvdw          = 1.0
+pbc           = xyz

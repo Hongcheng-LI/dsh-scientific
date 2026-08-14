@@ -1,0 +1,13 @@
+# dsh-vina: AutoDock Vina docking tools for DeepSeek Harness.
+#
+# 需要本机安装 AutoDock Vina（https://vina.scriu.org），vina 可执行文件在 PATH 中；
+# 或用 binary 配置项指定绝对路径：
+#
+#   - id: tool-vina
+#     config:
+#       binary: D:/tools/vina/vina.exe    # 缺省用 PATH 里的 vina
+#       timeoutMs: 600000                 # 单次对接超时，默认 10 分钟
+- insert:
+    - id: tool-vina
+      name: dsh-vina
+      config: {}

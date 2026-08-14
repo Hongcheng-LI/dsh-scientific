@@ -1,0 +1,13 @@
+# dsh-pymol: PyMOL headless scripting tools for DeepSeek Harness.
+#
+# 需要本机安装 PyMOL（https://pymol.org），pymol 可执行文件在 PATH 中；
+# 或用 binary 配置项指定绝对路径：
+#
+#   - id: tool-pymol
+#     config:
+#       binary: D:/Program Files/PyMOL/PyMOLWin.exe   # 缺省用 PATH 里的 pymol
+#       timeoutMs: 300000                              # 脚本执行超时，默认 5 分钟
+- insert:
+    - id: tool-pymol
+      name: dsh-pymol
+      config: {}
