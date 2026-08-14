@@ -12,20 +12,26 @@ dsh-scientific 是 DeepSeek Harness（DSH）的科研计算插件套件：文献
 
 ## 安装插件
 
-方式一：从本仓库安装（DSH 会克隆并构建）：
+本仓库是 monorepo，根目录不是插件包，**按插件安装**（`plugins/` 下每个目录是独立插件包）。
+
+方式一：本地打包安装（最直接）：
 
 ```sh
-dsh plugin --profile web add github:Hongcheng-LI/dsh-scientific#v0.1
-```
-
-方式二：本地开发安装（tarball）：
-
-```sh
+git clone https://github.com/Hongcheng-LI/dsh-scientific
+cd dsh-scientific && npm install && npm run build
 cd plugins/zotero && npm pack
 dsh plugin --profile web add ./dsh-zotero-0.1.0.tgz
 ```
 
+方式二：npm 安装（各插件发布 npm 后）：
+
+```sh
+dsh plugin --profile web add dsh-zotero
+```
+
 装好后重启 `dsh web`。
+
+> 注：独立的 dsh-zotero 仓库已归档，`plugins/zotero` 是唯一维护位置。
 
 ## 安装 skills
 

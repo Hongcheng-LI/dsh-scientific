@@ -40,11 +40,14 @@ cd dsh-scientific
 npm install && npm run build && npm test
 ```
 
-安装插件到 DSH（以 zotero 为例）：
+安装插件到 DSH：本仓库是 monorepo，根目录不是插件包，**按插件安装**（以 zotero 为例，在插件目录打包后安装）：
 
 ```sh
-dsh plugin --profile web add github:Hongcheng-LI/dsh-scientific#v0.1
+cd plugins/zotero && npm pack
+dsh plugin --profile web add ./dsh-zotero-0.1.0.tgz
 ```
+
+> zotero 插件的唯一正本在本仓库（独立仓库 dsh-zotero 已归档不再维护）。
 
 详见 [docs/getting-started.md](docs/getting-started.md)。
 
