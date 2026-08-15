@@ -20,7 +20,7 @@
 
 | 模块 | 状态 | 说明 |
 |---|---|---|
-| `plugins/zotero` | ✅ 完成 | Zotero 文献库检索/全文/附件/笔记，9 个工具 |
+| [`dsh-zotero`](https://github.com/Hongcheng-LI/dsh-zotero) | ✅ 完成 | Zotero 文献库检索/全文/附件/笔记，9 个工具（**独立仓库**） |
 | `plugins/vina` | 🔲 骨架 | AutoDock Vina 分子对接（规划中） |
 | `plugins/pymol` | 🔲 骨架 | PyMOL 无头脚本（规划中） |
 | `plugins/chimerax` | 🔲 骨架 | ChimeraX 无头脚本（规划中） |
@@ -28,6 +28,8 @@
 | `skills/` | ✅ 5 个 | literature-review / batch-docking / docking-analysis / molecular-dynamics / journal-club |
 | `workflows/` | ✅ 3 个 | literature-research / literature-to-slides / docking-workflow |
 | `examples/` | ✅ 2 个 | vina-docking / gromacs-md 配置示例 |
+
+> **dsh-zotero 已独立成仓库**（2026-08 拆分）：`Hongcheng-LI/dsh-zotero`。本仓库的 `plugins/` 不再包含 zotero，skills / workflows 里引用 `zotero_*` 工具时需先单独安装该插件。
 
 > 骨架插件包结构齐全、装上不弄崩启动；通过 DSH `plugin-check` 审计。等核心算法 + UI 敲定后再注册工具。
 
@@ -52,7 +54,7 @@
                    │ 引用具体工具
 ┌──────────────────▼─────────────────────────┐
 │  Plugins（DSH 工具层）                      │
-│  plugins/zotero/   (9 tools, ready)         │
+│  dsh-zotero      (独立仓库, 9 tools, ready) │
 │  plugins/vina/     (skeleton)               │
 │  plugins/pymol/    (skeleton)               │
 │  plugins/chimerax/ (skeleton)               │
@@ -80,21 +82,20 @@ cd dsh-scientific
 npm install && npm run build
 ```
 
-### 3. 安装你需要的插件（按目录逐个）
+### 3. 安装你需要的插件
 
-本仓库是 monorepo，**根目录不是插件包**，必须在 `plugins/<name>/` 目录打包后安装：
+Zotero 插件是独立仓库，直接一行装：
 
 ```sh
-# zotero 是目前唯一完整插件
-cd plugins/zotero && npm pack
-dsh plugin --profile web add ./dsh-zotero-*.tgz
-cd ../..
+dsh plugin --profile web add github:Hongcheng-LI/dsh-zotero
+```
 
+骨架插件（vina / pymol / chimerax / gromacs）仍在 `plugins/` 下，按目录打包安装（目前不注册工具，安装无副作用）。本仓库是 monorepo，**根目录不是插件包**。
+
+```sh
 # 重启 DSH
 dsh --profile web
 ```
-
-骨架插件（vina / pymol / chimerax / gromacs）目前不注册工具，安装也无副作用。
 
 ### 4. 试试看
 
@@ -108,7 +109,7 @@ DSH 对话框里说：
 
 | 插件 | 工具数 | 状态 | 前置软件 | 文档 |
 |---|---|---|---|---|
-| `dsh-zotero` | 9 | ✅ 完成 | Zotero 7+ | [README](plugins/zotero/README.md) |
+| `dsh-zotero` | 9 | ✅ 完成（独立仓库）| Zotero 7+ | [github.com/Hongcheng-LI/dsh-zotero](https://github.com/Hongcheng-LI/dsh-zotero) |
 | `dsh-vina` | 0 | 🔲 骨架 | AutoDock Vina | [README](plugins/vina/README.md) |
 | `dsh-pymol` | 0 | 🔲 骨架 | PyMOL | [README](plugins/pymol/README.md) |
 | `dsh-chimerax` | 0 | 🔲 骨架 | ChimeraX | [README](plugins/chimerax/README.md) |
@@ -146,12 +147,12 @@ npm test        # 跑全部测试
 每个插件用 [`@deepseek-ai/dsh-plugin-check`](https://github.com/omdsh-dev/dsh-plugin-check) 体检。当前成绩：
 
 ```
-$ cd plugins/zotero && npm run audit
+$ cd dsh-zotero && npm run audit   # 独立仓库里跑
 verdict: PASS
 checks: 18 pass / 0 fail / 0 warn / 1 skip
 ```
 
-其他 4 个骨架插件等填 `apply()` 后补检。审计脚本见 `plugins/zotero/tools/`，详见 [plugins/zotero/tools/AUDIT-REPORT.md](plugins/zotero/tools/AUDIT-REPORT.md)。
+其他 4 个骨架插件等填 `apply()` 后补检。zotero 的审计记录已随仓库迁移：[github.com/Hongcheng-LI/dsh-zotero/tools/](https://github.com/Hongcheng-LI/dsh-zotero/tree/main/tools)。
 
 ## 路线图
 
@@ -200,7 +201,7 @@ It is **not another AI assistant** — it's a plugin pack for DSH; no separate w
 
 | Module | Status | Notes |
 |---|---|---|
-| `plugins/zotero` | ✅ Done | Zotero library search/fulltext/attachment/note, 9 tools |
+| [`dsh-zotero`](https://github.com/Hongcheng-LI/dsh-zotero) | ✅ Done | Zotero library search/fulltext/attachment/note, 9 tools (**standalone repo**) |
 | `plugins/vina` | 🔲 Skeleton | AutoDock Vina molecular docking (planned) |
 | `plugins/pymol` | 🔲 Skeleton | PyMOL headless scripts (planned) |
 | `plugins/chimerax` | 🔲 Skeleton | ChimeraX headless scripts (planned) |
@@ -208,6 +209,8 @@ It is **not another AI assistant** — it's a plugin pack for DSH; no separate w
 | `skills/` | ✅ 5 | literature-review, batch-docking, docking-analysis, molecular-dynamics, journal-club |
 | `workflows/` | ✅ 3 | literature-research, literature-to-slides, docking-workflow |
 | `examples/` | ✅ 2 | vina-docking, gromacs-md |
+
+> **dsh-zotero split into its own repo** (2026-08): `Hongcheng-LI/dsh-zotero`. This repo's `plugins/` no longer contains zotero; install it separately for the `zotero_*` tools referenced by skills/workflows.
 
 > Skeleton plugins pass the DSH plugin-check audit; structure is complete, no tools registered yet, safe to install.
 
@@ -241,19 +244,17 @@ cd dsh-scientific
 npm install && npm run build
 ```
 
-### 3. Install plugins per directory
+### 3. Install plugins
 
-This repo is a monorepo — the root is NOT an installable package. Install per-plugin:
+The Zotero plugin lives in its own repo — one-line install:
 
 ```sh
-cd plugins/zotero && npm pack
-dsh plugin --profile web add ./dsh-zotero-*.tgz
-cd ../..
+dsh plugin --profile web add github:Hongcheng-LI/dsh-zotero
 
 dsh --profile web
 ```
 
-Skeleton plugins register no tools; installing them has no effect.
+Skeleton plugins (vina/pymol/chimerax/gromacs) are under `plugins/`; install per directory via `npm pack` + `dsh plugin add`. They register no tools yet; installing them has no effect.
 
 ### 4. Try it
 
@@ -267,7 +268,7 @@ In the DSH chat:
 
 | Plugin | Tools | Status | Prerequisite | Docs |
 |---|---|---|---|---|
-| `dsh-zotero` | 9 | ✅ done | Zotero 7+ | [README](plugins/zotero/README.md) |
+| `dsh-zotero` | 9 | ✅ done (standalone) | Zotero 7+ | [github.com/Hongcheng-LI/dsh-zotero](https://github.com/Hongcheng-LI/dsh-zotero) |
 | `dsh-vina` | 0 | 🔲 skeleton | AutoDock Vina | [README](plugins/vina/README.md) |
 | `dsh-pymol` | 0 | 🔲 skeleton | PyMOL | [README](plugins/pymol/README.md) |
 | `dsh-chimerax` | 0 | 🔲 skeleton | ChimeraX | [README](plugins/chimerax/README.md) |
@@ -292,7 +293,7 @@ npm test
 Each plugin is checked by [`@deepseek-ai/dsh-plugin-check`](https://github.com/omdsh-dev/dsh-plugin-check). Current scores:
 
 ```
-$ cd plugins/zotero && npm run audit
+$ cd dsh-zotero && npm run audit   # in the standalone repo
 verdict: PASS
 checks: 18 pass / 0 fail / 0 warn / 1 skip
 ```

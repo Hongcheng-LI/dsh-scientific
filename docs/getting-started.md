@@ -2,7 +2,9 @@
 
 ## 这是什么
 
-dsh-scientific 是 DeepSeek Harness（DSH）的科研计算插件套件：文献管理、分子对接、结构可视化、分子动力学，配套研究 skills 与工作流。monorepo 结构，`plugins/` 下每个目录是一个可独立安装的 DSH 插件。
+dsh-scientific 是 DeepSeek Harness（DSH）的科研计算插件套件：文献管理、分子对接、结构可视化、分子动力学，配套研究 skills 与工作流。
+
+**Zotero 插件已独立成仓库**（[Hongcheng-LI/dsh-zotero](https://github.com/Hongcheng-LI/dsh-zotero)），不再位于本仓库 `plugins/` 下；本仓库的 skills/workflows 引用 `zotero_*` 工具时需先单独安装该插件。
 
 ## 环境要求
 
@@ -12,26 +14,26 @@ dsh-scientific 是 DeepSeek Harness（DSH）的科研计算插件套件：文献
 
 ## 安装插件
 
-本仓库是 monorepo，根目录不是插件包，**按插件安装**（`plugins/` 下每个目录是独立插件包）。
-
-方式一：本地打包安装（最直接）：
+### Zotero 插件（独立仓库，一行装）
 
 ```sh
-git clone https://github.com/Hongcheng-LI/dsh-scientific
-cd dsh-scientific && npm install && npm run build
-cd plugins/zotero && npm pack
-dsh plugin --profile web add ./dsh-zotero-0.1.0.tgz
-```
-
-方式二：npm 安装（各插件发布 npm 后）：
-
-```sh
-dsh plugin --profile web add dsh-zotero
+dsh plugin --profile web add github:Hongcheng-LI/dsh-zotero
 ```
 
 装好后重启 `dsh web`。
 
-> 注：独立的 dsh-zotero 仓库已归档，`plugins/zotero` 是唯一维护位置。
+### 本仓库的骨架插件（vina/pymol/chimerax/gromacs）
+
+本仓库是 monorepo，**根目录不是插件包**，按插件目录打包安装：
+
+```sh
+git clone https://github.com/Hongcheng-LI/dsh-scientific
+cd dsh-scientific && npm install && npm run build
+cd plugins/<name> && npm pack
+dsh plugin --profile web add ./<name>-*.tgz
+```
+
+骨架插件目前不注册工具，安装无副作用。
 
 ## 安装 skills
 

@@ -1,6 +1,6 @@
 # 工作流：文献到幻灯片（literature-to-slides）
 
-**组合**：`plugins/zotero` + `skills/journal-club`
+**组合**：`dsh-zotero`（独立仓库：`dsh plugin add github:Hongcheng-LI/dsh-zotero`）+ `skills/journal-club`
 **输入**：一篇 Zotero 内的论文（标题/关键词/key）
 **输出**：组会讲稿大纲 + 幻灯片（Markdown 或 PPTX）
 

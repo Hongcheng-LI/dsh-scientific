@@ -1,6 +1,6 @@
 # 工作流：文献调研（literature-research）
 
-**组合**：`plugins/zotero` + dsh-synbio + `skills/literature-review`
+**组合**：`dsh-zotero`（独立仓库：`dsh plugin add github:Hongcheng-LI/dsh-zotero`）+ dsh-synbio + `skills/literature-review`
 
 **输入**：一个研究主题（如"链霉菌 piericidin 生物合成的调控机制"）
 **输出**：结构化调研报告 + 纳入 Zotero 的关键文献清单
